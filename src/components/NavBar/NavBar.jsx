@@ -1,13 +1,27 @@
+import NavLink from "../NavLink/NavLink";
+import NavLinkChild from "../NavLink/NavLinkChild";
+import NavLinkClass from "../NavLink/NavLinkClass";
+//importar y renderizar CartWidget
 import "./navbar.css";
 
-export default function NavBar() {
+export default function NavBar() { 
+
+  function handleClick(){
+    console.log("click");
+  }
+
   return (
     <nav className="nav-main">
-      {/* Crear NavBar */}
       <ul className="nav-list">
-        <li>Categoria A</li>
-        <li>Categoria B</li>
-        <li>Categoria C</li>
+
+          <NavLink handleOnClick={handleClick} title="Productos"/>
+          <NavLink handleOnClick={handleClick} title="Servicios"/>
+          <NavLink handleOnClick={handleClick} title="Contacto"/>
+          <NavLinkChild handleOnClick={handleClick}>
+            Login
+          </NavLinkChild> 
+          <NavLinkClass title="ClassComponent"></NavLinkClass>         
+          {/* <CartWidget/> */}
       </ul>
     </nav>
   );
