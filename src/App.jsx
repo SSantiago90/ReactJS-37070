@@ -1,9 +1,10 @@
 import logoImg from "./img/coderhouse.jpg";
 import NavBar from "./components/NavBar/NavBar";
+import "./app.css";
 
 function App() {
   const stylesH1 = {
-    color: "blue",
+    color: "lightblue",
   };
 
   return (
@@ -12,9 +13,8 @@ function App() {
         <NavBar />
         <h1 style={stylesH1}>Bienvenidos a mi app</h1>
         <img alt="logo coder" src={logoImg} />
-        <br />
         <hr />
-        <p className="nav-main">Hola Coderhouse</p>
+        <p>Hola Coderhouse</p>
       </header>
     </div>
   );
