@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar/NavBar";
 import "./app.css";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import Button from "./components/Button";
-import TailwindExample from "./components/TailwindExample";
+import BootstrapExample from "./components/BootstrapExample";
 
 function App() {
   const colorH1 = "green";
@@ -20,11 +20,10 @@ function App() {
         <img alt="logo coder" src={logoImg} />
         <hr />
       </header>
-      <ItemListContainer />
-      <TailwindExample />
-      {/*  <h1 class="decoration-zinc-400 text-3xl font-bold underline">
-        Hello world!
-      </h1> */}
+      <div className="container">
+        <h1 className="text-primary mt-5">Hola Bootstrap</h1>
+      </div>
+      <BootstrapExample></BootstrapExample>
       <Button colorBackground={"purple"} />
     </div>
   );
