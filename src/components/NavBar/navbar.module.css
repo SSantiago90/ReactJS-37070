@@ -1,0 +1,15 @@
+.navMain {
+    color: rgb(147, 255, 241);
+    font-size: 20px;    
+}
+
+.navList{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.redLink {
+    color: red;
+    font-size: 22px;
+}

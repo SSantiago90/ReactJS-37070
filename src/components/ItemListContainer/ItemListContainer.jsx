@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import styles from "./itemlistcontainer.module.css";
 
 function ItemListContainer() {
   return (
-    <div>ItemListContainer</div>
-  )
+    <div>
+      <h2>Item List Container</h2>
+    </div>
+  );
 }
 
-export default ItemListContainer
+export default ItemListContainer;
