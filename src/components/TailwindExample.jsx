@@ -1,5 +1,6 @@
 import React from "react";
 
+/* Ejemplo tomado directamente de la web de tailwind */
 function TailwindExample() {
   return (
     <div className="flex font-sans">

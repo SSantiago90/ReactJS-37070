@@ -14,8 +14,8 @@ export default function NavBar() {
         <NavLink handleOnClick={handleClick} title="Productos" />
         <NavLink handleOnClick={handleClick} title="Servicios" />
         <NavLink handleOnClick={handleClick} title="Contacto" />
-        <NavLinkChild handleOnClick={handleClick}>Login</NavLinkChild>
         <NavLinkClass title="ClassComponent"></NavLinkClass>
+        <NavLinkChild handleOnClick={handleClick}>Login</NavLinkChild>
       </ul>
     </nav>
   );
