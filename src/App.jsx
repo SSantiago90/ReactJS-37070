@@ -1,12 +1,12 @@
 import NavBar from "./components/NavBar/NavBar";
-import "./app.css";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import "./app.css";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App  mx-auto">
       <NavBar />
-      <ItemListContainer greet="Hola Coder" />
+      <ItemListContainer greeting="Hola Coder" />
     </div>
   );
 }

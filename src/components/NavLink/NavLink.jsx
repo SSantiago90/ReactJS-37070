@@ -1,6 +1,6 @@
-export default function NavLink({ title, handleOnClick }) {
+export default function NavLink({ title }) {
   return (
-    <li onClick={handleOnClick}>
+    <li>
       {title}
     </li>
   );

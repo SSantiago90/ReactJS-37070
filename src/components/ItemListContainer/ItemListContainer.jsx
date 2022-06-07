@@ -1,11 +1,11 @@
 import React from "react";
-import ItemCount from "../ItemCount/ItemCount";
 
 function ItemListContainer(props) {
   return (
-    <div>
-      <h1>{props.greet}</h1>
-      <ItemCount stock={5} initial={1} />
+    <div className="container mx-auto mt-5">
+      <h1 className="text-3xl text-gray-900 mt-2 font-medium title-font">
+        {props.greeting}
+      </h1>
     </div>
   );
 }

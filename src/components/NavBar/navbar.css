@@ -1,15 +1,17 @@
-.nav-main {
-    color: rgb(255, 235, 147);
+.navMain {
+    color: rgb(27, 99, 89);
     font-size: 20px;    
+    padding: 25px 2px;
+    box-shadow: 0px 0px 18px rgb(192, 192, 192);
 }
 
-.nav-list{
+.navList{
     list-style: none;
     display: flex;
     justify-content: space-around;
 }
 
-h1 {
+.redLink {
     color: red;
-    font-size: 78px;
+    font-size: 22px;
 }

@@ -1,9 +1,13 @@
 .navMain {
     color: rgb(27, 99, 89);
     font-size: 20px;    
+    padding: 25px 2px 18px;
+    box-shadow: 0px 0px 18px rgb(192, 192, 192);
 }
 
-.navList{
+.navList{    
+    max-width: 960px;
+    margin: 0 auto;
     list-style: none;
     display: flex;
     justify-content: space-around;
