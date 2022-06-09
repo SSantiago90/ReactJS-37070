@@ -4,7 +4,7 @@ function randomError() {
 }
 
 let APIcall = new Promise((resolve, reject) => {
-  const data =  { id: "1", name: "Mi producto", description: "El mejor producto de ka tienda", stock: 9 }
+  const data =  { id: "1", name: "Mi producto", description: "El mejor producto de la tienda", stock: 9 }
 
   if (randomError() === false) {
     console.log("resolviendo...");

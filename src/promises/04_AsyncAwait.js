@@ -17,6 +17,7 @@ console.log("App iniciada!");
 
 async function main() {
   let resAPI = await APIcall();
+  // APIcall.then( (repuesta) => resAPI = respuesta));
   console.log(`Respuesta: ${resAPI}`);
 }
 
