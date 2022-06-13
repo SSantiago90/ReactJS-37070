@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { productos } from "../../data/products";
-import ItemList from "../ItemList/ItemList";
+import { productos } from "../data/products";
+import ItemDetail from "./ItemDetail";
 
-const ItemListContainer = ({ saludo }) => {
-  const [products, setProducts] = useState([]);
+const ItemDetailContainer = ({ saludo, itemId }) => {
+  const [product, setProduct] = useState({});
 
   useEffect(() => {
     //apis, llamados al backend
-    const traerProductos = new Promise((res, rej) => {
+    const traerProducto = new Promise((resolve, reject) => {
       setTimeout(() => {
-        res(productos);
+        resolve(productos);
       }, 600);
     });
 
     //console.log(traerProductos)
-    traerProductos
+    traerProducto
       .then((res) => {
         //console.log(res)
-        setProducts(res);
+        setProduct(res);
       })
       .catch((error) => {
         console.log(error);
@@ -29,9 +29,9 @@ const ItemListContainer = ({ saludo }) => {
   return (
     <div className="container mx-auto mt-5">
       <div>{saludo}</div>
-      <ItemList items={products} />
+      <ItemDetail item={product} />
     </div>
   );
 };
 
-export default ItemListContainer;
+export default ItemDetailContainer;
