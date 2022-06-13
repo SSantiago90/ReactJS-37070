@@ -1,68 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { productos } from "../../data/products";
+import ItemList from "../ItemList/ItemList";
 
-const arrayData = [
-  {
-     id: "1",
-     name: "Mi producto",
-     description: "El mejor producto de la tienda",
-     stock: 9,
-   },
-  {
-     id: "2",
-     name: "Otro Producto",
-     description: "Otro item de mi tienda",
-     stock: 5,
-   },
-   {
-    id: "3",
-    name: "Otro Producto Mas",
-    description: "Otro item de mi super tienda",
-    stock: 5,
-  },
-  {
-    id: "4",
-    name: "Mi producto",
-    description: "El mejor producto de la tienda",
-    stock: 9,
-  },
- {
-    id: "5",
-    name: "Otro Producto",
-    description: "Otro item de mi tienda",
-    stock: 5,
-  },
-  {
-   id: "6",
-   name: "Otro Producto Mas",
-   description: "Otro item de mi super tienda",
-   stock: 5,
- }
-]
+const ItemListContainer = ({ saludo }) => {
+  const [products, setProducts] = useState([]);
 
-function ItemListContainer(props) {
-  // Una promise que me "resuelva" o devuelva los items
-  // una llamada a la promise (o la "API") y guardar la respuesta en el Estado
+  useEffect(() => {
+    //apis, llamados al backend
+    const traerProductos = new Promise((res, rej) => {
+      setTimeout(() => {
+        res(productos);
+      }, 500);
+    });
+    //console.log(traerProductos)
+    traerProductos
+      .then((res) => {
+        //console.log(res)
+        setProducts(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-  // este llamado a la Promise tiene que estar dentro de un useEffect();
-  /* apiCall().then( respuesta => setState(respuesta)) */
+  //console.log(products);
 
   return (
-    <div className="container mx-auto mt-5">      
-        {props.greeting}
-        {/* Esto deberia ser tarea del <ItemList/> */}
-        { arrayData.map( item =>{
-            return (              
-              /*  <Item item={item}> */
-                <div key={item.id}>
-                  <h3 className="text-3xl text-gray-900 mt-2 font-medium title-font">{item.name}</h3>
-                  <p>{item.description}</p>
-                  <hr/><br/><br/>
-                </div>
-            )
-          })
-        }
+    <div className="container mx-auto mt-5">
+      <div>{saludo}</div>
+      <ItemList items={products} />
     </div>
   );
-}
+};
 
 export default ItemListContainer;
