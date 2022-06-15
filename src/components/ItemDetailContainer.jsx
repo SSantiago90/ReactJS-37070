@@ -2,21 +2,18 @@ import React, { useState, useEffect } from "react";
 import { productos } from "../data/products";
 import ItemDetail from "./ItemDetail";
 
-const ItemDetailContainer = ({ saludo, itemId }) => {
+const ItemDetailContainer = ({ greeting }) => {
   const [product, setProduct] = useState({});
 
   useEffect(() => {
-    //apis, llamados al backend
     const traerProducto = new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(productos);
+        resolve(productos[2]);
       }, 600);
     });
 
-    //console.log(traerProductos)
     traerProducto
       .then((res) => {
-        //console.log(res)
         setProduct(res);
       })
       .catch((error) => {
@@ -24,11 +21,9 @@ const ItemDetailContainer = ({ saludo, itemId }) => {
       });
   }, []);
 
-  //console.log(products);
-
   return (
-    <div className="container mx-auto mt-5">
-      <div>{saludo}</div>
+    <div className="text-center container mx-auto mt-5">
+      <div className="font-bold text-pink-600 text-4xl mb-2">{greeting}</div>
       <ItemDetail item={product} />
     </div>
   );

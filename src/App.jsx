@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App  mx-auto">
       <NavBar />
-      {/*  <ItemListContainer greeting="Hola Coder" /> */}
+      <ItemListContainer greeting="Nuestro catálogo" />
       <ItemDetailContainer greeting="Detalle del producto" />
     </div>
   );
