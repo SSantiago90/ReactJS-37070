@@ -1,20 +1,12 @@
-import React from "react";
-
 const Item = ({ item }) => {
-  const styles = {
-    maxWidth: "380px",
-    margin: "5px 15px",
-  };
-
   return (
-    <div style={styles} key={item.id}>
-      <h3 className="text-3xl text-gray-900 mt-2 font-medium title-font">
+    <div className="mb-5 py-3 itemlist-card text-center" key={item.id}>
+      <h3 className="text-3xl text-gray-900 mt-2 mb-4 font-medium title-font">
         {item.name}
       </h3>
-      <img width="200" src={item.img} alt={item.name} />
-      <p>{item.description}</p>
-      <hr />
-      <br />
+      <img className="itemlist-card-img" src={item.img} alt={item.name} />
+      <p className="mt-5 mb-3 text-xs text-gray-500">{item.description}</p>
+      <p className="mt-4 text-green-700 text-md font-bold">$ {item.price}</p>
     </div>
   );
 };
