@@ -1,19 +1,24 @@
 import styles from "./navbar.module.css";
-import NavLink from "../NavLink/NavLink";
-import NavLinkChild from "../NavLink/NavLinkChild";
-import NavLinkClass from "../NavLink/NavLinkClass";
-
-const categorias = ["Inicio", "Productos", "Contacto", "Login"];
+import { Link } from "react-router-dom";
+import CartWidget from "./CartWidget";
 
 export default function NavBar() {
   return (
     <nav className={styles.navMain}>
       <ul className={styles.navList}>
-        {
-          categorias.map( (cat, index) => {
-            return <NavLink key={index} title={cat} />
-          })
-        }
+        <li>
+          <Link to="/">Inicio</Link>
+        </li>
+        <li>
+          <Link to="/category/Fabaceae">Fabaceae</Link>
+        </li>
+        <li>
+          <Link to="/category/Pinaceae">Pinaceae</Link>
+        </li>
+        <li>
+          <Link to="/category/Rosaceae">Rosaceae</Link>
+        </li>
+        <CartWidget />
       </ul>
     </nav>
   );

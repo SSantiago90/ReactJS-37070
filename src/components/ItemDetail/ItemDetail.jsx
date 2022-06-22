@@ -1,6 +1,12 @@
-import React from "react";
+import { useState } from "react";
+import ItemCount from "../ItemCount/ItemCount";
+import { Link } from "react-router-dom";
 
 function ItemDetail({ item }) {
+  const [isInCart, setIsInCart] = useState(false);
+
+  const handleAddtoCart = () => setIsInCart(true);
+
   return (
     <div className="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
       <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
@@ -15,6 +21,11 @@ function ItemDetail({ item }) {
 
         <p className="mt-5 mb-3 text-xs text-gray-500">{item.description}</p>
         <p className="mt-4 text-green-700 text-md font-bold">$ {item.price}</p>
+        {isInCart ? (
+          <Link to="/cart">Ir al carrito</Link>
+        ) : (
+          <ItemCount stock={item.stock} initial={1} onAdd={handleAddtoCart} />
+        )}
       </div>
     </div>
   );

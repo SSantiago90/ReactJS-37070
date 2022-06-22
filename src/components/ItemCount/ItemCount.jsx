@@ -1,21 +1,33 @@
-/* Importamos el Hook de estado */
+import { useState } from "react";
 
-function ItemCount({ stock, initial }) {
-  /* Definimos el estado con useState */
+function ItemCount({ stock, initial, onAdd }) {
+  const [count, setCount] = useState(initial);
 
   function suma() {
-    /* Logica suma */
+    if (count < stock) setCount(count + 1);
   }
 
-  /* Función de resta  */
+  function resta() {
+    if (count > 1) setCount(count - 1);
+  }
 
   return (
-    <div>
-      <button /* callaback funcion resta */> - </button>
-      <span>{/* mostramos el estado */} </span>
-      <button /* callaback funcion suma*/> + </button>
-      <br />
-      <button>Agregar al carrito</button>
+    <div className="container mt-5">
+      <div className="flex justify-around py-2 border-2">
+        <button onClick={resta} className="text-2xl font-bold text-red-700">
+          -
+        </button>
+        <span className="text-2xl font-bold text-gray-700">{count}</span>
+        <button onClick={suma} className="text-2xl font-bold text-green-700">
+          +
+        </button>
+      </div>
+      <button
+        className="mt-3 bg-blue-500 py-2 px-8 rounded-md font-bold text-white"
+        onClick={onAdd}
+      >
+        Agregar al carrito
+      </button>
     </div>
   );
 }
