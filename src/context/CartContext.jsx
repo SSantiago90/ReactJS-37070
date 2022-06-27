@@ -7,18 +7,21 @@ const cartContext = createContext();
 //named export
 export function CartContextProvider( props ){
 
-  const [cart, setCart] = useState([ {item: "Item A", cant: 2}, {item: "Item B", cant: 5}]);
+  const [cart, setCart] = useState([]);
   
-  function addToCart(item, cant){
-      setCart( {
-        ...item,
-        cantidad : cant
-       })
+  function addToCart(item, cant){     
+        setCart([...cart,
+           {...item, qnty:cant}
+          ]);
+  }
+
+  function isInCartContext(id){
+    return cart.some( item => item.id === id );
   }
   
   //3. pasamos al Provider el "value" para los componentes que consuman el context
   //4. retornamos el Context Provider con el value
-  return <cartContext.Provider value={ { cart, otrovalor: "Hola", addToCart } }>
+  return <cartContext.Provider value={ { cart, isInCartContext, otrovalor: "Hola", addToCart } }>
       {props.children}
   </cartContext.Provider>
 }

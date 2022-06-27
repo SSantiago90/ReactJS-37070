@@ -10,7 +10,7 @@ function ItemDetail({ item }) {
   const [isInCart, setIsInCart] = useState(false);
 
   //8 importamos el VALUE del Context   
-  const { addToCart, cart } = useContext(cartContext);
+  const { addToCart, cart, isInCartContext } = useContext(cartContext);
 
   console.log(cart);
 
@@ -33,11 +33,15 @@ function ItemDetail({ item }) {
 
         <p className="mt-5 mb-3 text-xs text-gray-500">{item.description}</p>
         <p className="mt-4 text-green-700 text-md font-bold">$ {item.price}</p>
-        {isInCart ? (
-          <Link to="/cart">Ir al carrito</Link>
-        ) : (
-          <ItemCount stock={item.stock} initial={1} onAdd={handleAddtoCart} />
-        )}
+
+        {isInCart 
+        ?  <Link to="/cart">Ir al carrito</Link>
+        :  <ItemCount stock={item.stock} initial={1} onAdd={handleAddtoCart} />
+        }
+        { isInCartContext(item.id) 
+        && <button className="bg-red-500 py-2 px-8 rounded-md font-bold text-white">
+          Remover del carrito
+          </button> }       
       </div>
     </div>
   );

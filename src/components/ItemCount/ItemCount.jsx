@@ -1,7 +1,16 @@
+import { useEffect } from "react";
 import { useState } from "react";
 
 function ItemCount({ stock, initial, onAdd }) {
   const [count, setCount] = useState(initial);
+
+  useEffect( () => {
+    console.log("render itemcount");
+    return(
+      () => { console.log("unmount itemcount") }
+    )
+
+  },[])
 
   function suma() {
     if (count < stock) setCount(count + 1);
