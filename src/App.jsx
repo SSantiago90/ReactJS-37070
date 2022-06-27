@@ -5,27 +5,33 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Contact from "./pages/Contact";
 
+
+//6. Importamos y renderizamos el Provider
+import { CartContextProvider } from './context/CartContext';
+
 function App() {
   return (
     <div className="App  mx-auto">
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route
-            path="/"
-            element={<ItemListContainer greeting="Nuestro catálogo" />}
-          />
-          <Route
-            path="/category/:categoryId"
-            element={<ItemListContainer greeting="Categorías" />}
-          />
-          <Route
-            path="/plant/:itemId"
-            element={<ItemDetailContainer greeting="Detalle del producto" />}
-          />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </BrowserRouter>
+      <CartContextProvider>
+        <BrowserRouter>
+          <NavBar />        
+          <Routes>
+            <Route
+              path="/"
+              element={<ItemListContainer greeting="Nuestro catálogo" />}
+            />
+            <Route
+              path="/category/:categoryId"
+              element={<ItemListContainer greeting="Categorías" />}
+            />
+            <Route
+              path="/plant/:itemId"
+              element={<ItemDetailContainer greeting="Detalle del producto" />}
+            />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </BrowserRouter>
+      </CartContextProvider>
     </div>
   );
 }

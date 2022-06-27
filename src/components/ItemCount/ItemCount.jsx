@@ -11,6 +11,10 @@ function ItemCount({ stock, initial, onAdd }) {
     if (count > 1) setCount(count - 1);
   }
 
+  function addToCart(){
+    onAdd(count);
+  }
+
   return (
     <div className="container mt-5">
       <div className="flex justify-around py-2 border-2">
@@ -24,7 +28,7 @@ function ItemCount({ stock, initial, onAdd }) {
       </div>
       <button
         className="mt-3 bg-blue-500 py-2 px-8 rounded-md font-bold text-white"
-        onClick={onAdd}
+        onClick={ addToCart }
       >
         Agregar al carrito
       </button>
