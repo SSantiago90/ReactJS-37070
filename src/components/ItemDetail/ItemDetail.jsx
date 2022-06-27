@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
-
 //7. Importamos el Hook useContext y el UserContext
 import cartContext from '../../context/CartContext';
 
@@ -35,7 +34,7 @@ function ItemDetail({ item }) {
         <p className="mt-4 text-green-700 text-md font-bold">$ {item.price}</p>
 
         {isInCart 
-        ?  <Link to="/cart">Ir al carrito</Link>
+        ?  <Link className="bg-green-500 py-2 px-8 rounded-md font-bold text-white" to="/cart">Ir al carrito</Link>
         :  <ItemCount stock={item.stock} initial={1} onAdd={handleAddtoCart} />
         }
         { isInCartContext(item.id) 

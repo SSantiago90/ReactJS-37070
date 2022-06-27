@@ -9,7 +9,6 @@ function ItemCount({ stock, initial, onAdd }) {
     return(
       () => { console.log("unmount itemcount") }
     )
-
   },[])
 
   function suma() {

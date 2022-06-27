@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { productos } from "../../data/products";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
+import RotateLoader from 'react-spinners/RotateLoader'
+import ErrorMsg from "../ErrorMsg";
 
 const ItemDetailContainer = ({ greeting }) => {
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [hayError, setHayError] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const { itemId } = useParams();
 
@@ -14,7 +16,8 @@ const ItemDetailContainer = ({ greeting }) => {
     return new Promise((resolve, reject) => {
       const itemResult = productos.find((item) => item.id === parseInt(itemId));
       setTimeout(() => {
-        resolve(itemResult);
+       resolve(itemResult);
+       /* reject("error mensaje") */
       },2000);
     });
   }
@@ -25,7 +28,7 @@ const ItemDetailContainer = ({ greeting }) => {
         setProduct(res);        
       })
       .catch((error) => {
-        setHayError(error);        
+        setIsError(error);        
       })
       .finally(() => {
         setIsLoading(false);
@@ -33,11 +36,13 @@ const ItemDetailContainer = ({ greeting }) => {
   }, []);
 
   if(isLoading){
-    return <div>Cargando...</div>
+    return <div className="container mx-auto">
+      <RotateLoader color={"red"} size={20} />
+    </div>
   }
 
-  if(hayError){
-      return <p className="text-red-500">{hayError}</p> 
+  if(isError){
+      return <ErrorMsg isWarning={false} text={isError}/>
   }
   
   return (

@@ -3,7 +3,7 @@ import { productos } from "../../data/products";
 import ItemList from "../ItemList/ItemList";
 
 const ItemListContainer = ({ greeting }) => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(null);
 
   useEffect(() => {
     //apis, llamados al backend
@@ -24,12 +24,17 @@ const ItemListContainer = ({ greeting }) => {
       });
   }, []);
 
-  //console.log(products);
+  console.log(products);
 
   return (
     <div className="text-center container mx-auto mt-5">
       <div className="font-bold text-pink-600 text-4xl mb-2">{greeting}</div>
-      <ItemList items={products} />
+     
+      {
+        products
+          ? <ItemList items={products} />
+          : <h3>Cargando . . .</h3>
+       }
     </div>
   );
 };
