@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { productos } from "../../data/products";
 import ItemList from "../ItemList/ItemList";
+import RotateLoader from 'react-spinners/RotateLoader'
 
 const ItemListContainer = ({ greeting }) => {
   const [products, setProducts] = useState(null);
@@ -10,7 +11,7 @@ const ItemListContainer = ({ greeting }) => {
     const traerProductos = new Promise((res, rej) => {
       setTimeout(() => {
         res(productos);
-      }, 600);
+      },1500);
     });
 
     //console.log(traerProductos)
@@ -33,7 +34,13 @@ const ItemListContainer = ({ greeting }) => {
       {
         products
           ? <ItemList items={products} />
-          : <h3>Cargando . . .</h3>
+          : (
+            <div className="mx-auto h-96 flex justify-around">
+              <div className="flex-1 flex justify-center items-center">
+              <RotateLoader className="mx-auto align-middle" color={"rgb(217, 4, 121)"} size={20} />
+              </div>
+            </div>
+          )
        }
     </div>
   );

@@ -3,7 +3,7 @@ export const productos = [
     id: 1,
     name: "Bessey's Locoweed",
     category: "Fabaceae",
-    stock: 20,
+    stock: 0,
     price: 57.38,
     img: "https://live.staticflickr.com/65535/48188567041_1a7cb2b590_b.jpg",
     description: "Oxytropis besseyi (Rydb.) Blank. var. fallax Barneby",

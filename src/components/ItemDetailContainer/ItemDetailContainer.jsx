@@ -16,9 +16,12 @@ const ItemDetailContainer = ({ greeting }) => {
     return new Promise((resolve, reject) => {
       const itemResult = productos.find((item) => item.id === parseInt(itemId));
       setTimeout(() => {
+        if (itemResult === undefined) {         
+          reject(new Error("No se encontró el producto"));
+        }
+
        resolve(itemResult);
-       /* reject("error mensaje") */
-      },2000);
+      },1500);
     });
   }
 
@@ -28,7 +31,8 @@ const ItemDetailContainer = ({ greeting }) => {
         setProduct(res);        
       })
       .catch((error) => {
-        setIsError(error);        
+        console.error(error);
+        setIsError(error.message);        
       })
       .finally(() => {
         setIsLoading(false);
@@ -36,19 +40,22 @@ const ItemDetailContainer = ({ greeting }) => {
   }, []);
 
   if(isLoading){
-    return <div className="container mx-auto">
-      <RotateLoader color={"red"} size={20} />
+    return (
+    <div className="mx-auto container h-96 flex justify-around">
+      <div className="flex-1 flex justify-center items-center">
+      <RotateLoader className="mx-auto align-middle" color={"rgb(217, 4, 121)"} size={20} />
+      </div>
     </div>
+    )
   }
 
-  if(isError){
-      return <ErrorMsg isWarning={false} text={isError}/>
-  }
+ 
   
   return (
-    <div className="text-center container mx-auto mt-5">
+    <div className="text-center container mx-auto mt-5 h-screen">
       <div className="font-bold text-pink-600 text-4xl mb-2">{greeting}</div>  
-      <ItemDetail item={product} />
+      {isError && <ErrorMsg text={isError} />}     
+      {product.id && <ItemDetail item={product} />}
     </div>
   );
   
