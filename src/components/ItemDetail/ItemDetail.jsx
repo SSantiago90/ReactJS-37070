@@ -45,7 +45,7 @@ function ItemDetail({ item }) {
         }
 
         {/* si el item fue agregado al Context (similar a anterior) */}
-        { isInCartContext(item.id) && <button className="bg-red-500 py-2 px-8 rounded-md font-bold text-white">
+        { isInCartContext(item.id) && <button  className="mt-3 bg-red-500 py-2 px-8 rounded-md font-bold text-white">
           Remover del carrito
           </button> }       
       </div>
