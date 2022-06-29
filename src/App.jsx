@@ -6,12 +6,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Contact from "./pages/Contact";
 
 
-//6. Importamos y renderizamos el Provider
 import { CartContextProvider } from './context/CartContext';
+import CartView from "./components/CartView/CartView";
 
 function App() {
+
   return (
-    <div className="App  mx-auto">
+    <div className="App  mx-auto">  
       <CartContextProvider>
         <BrowserRouter>
           <NavBar />        
@@ -29,6 +30,7 @@ function App() {
               element={<ItemDetailContainer greeting="Detalle del producto" />}
             />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/cart" element={ <CartView  />} />
           </Routes>
         </BrowserRouter>
       </CartContextProvider>
