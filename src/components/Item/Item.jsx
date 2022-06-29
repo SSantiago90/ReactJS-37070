@@ -9,7 +9,7 @@ const Item = ({ item }) => {
           {item.name}
         </h3>
         <img
-          className="w-80 h-80 object-cover"
+          className="w-80 h-80 object-cover rounded-md"
           src={item.img}
           alt={item.name}
         />
