@@ -17,13 +17,14 @@ async function getAllItems() {
   const plantsColec = collection(firestoreApp, "plants");
   const plantsSnapshot = await getDocs(plantsColec);
 
-  return plantsSnapshot.docs.map((doc) => {
+  let arrayItemsFromFirebase = plantsSnapshot.docs.map((doc) => {
     return {
       id: doc.id,
       ...doc.data(),
     };
   });
- 
+
+  return arrayItemsFromFirebase;
 }
 
 export default getAllItems;
