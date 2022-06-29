@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { productos } from "../../data/products";
 import ItemList from "../ItemList/ItemList";
 import RotateLoader from 'react-spinners/RotateLoader'
+import getAllItems from "../../services/firestore";
 
 const ItemListContainer = ({ greeting }) => {
   const [products, setProducts] = useState(null);
 
-  useEffect(() => {
-    //apis, llamados al backend
-    const traerProductos = new Promise((res, rej) => {
-      setTimeout(() => {
-        res(productos);
-      },1500);
-    });
-
-    //console.log(traerProductos)
-    traerProductos
+  useEffect(() => { 
+    getAllItems()
       .then((res) => {
-        //console.log(res)
         setProducts(res);
       })
       .catch((error) => {
