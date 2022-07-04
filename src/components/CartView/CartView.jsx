@@ -2,8 +2,11 @@ import { useContext } from "react";
 import cartContext from "../../context/CartContext";
 import Button from "../Button";
 
+import { createBuyOrder } from "../../services/firestore";
+import CartForm from "./CartForm";
+
 function CartView() {
-  const { cart, removeItem, clearCart, totalPriceCart } = useContext(cartContext);
+  const { cart, removeItem, clearCart, totalPriceCart } = useContext(cartContext);  
 
   return (
     <>
@@ -21,7 +24,10 @@ function CartView() {
                 $ {item.price}
               </p>
               <p>Cantidad de unidades: {item.qnty} </p>
-              <button onClick={ ()=> removeItem(item.id) } className="bg-red-500 py-2 px-8 rounded-md font-bold text-white mt-5">
+              <button
+                onClick={() => removeItem(item.id)}
+                className="bg-red-500 py-2 px-8 rounded-md font-bold text-white mt-5"
+              >
                 X
               </button>
               <p>
@@ -41,8 +47,7 @@ function CartView() {
           </p>
         </div>
 
-       <Button text="Finalizar Compra" color="green" className="text-gray-100 px-8 py-2" />
-       <Button text="Vaciar Carrito" color="red" className="uppercase text-gray-100 px-8 py-2" />
+       <CartForm cart={cart} totalPriceCart={totalPriceCart} clearCart={clearCart} createBuyOrder={createBuyOrder} />
       </div>
     </>
   );

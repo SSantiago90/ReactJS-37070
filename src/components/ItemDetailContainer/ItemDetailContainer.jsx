@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { productos } from "../../data/products";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 import RotateLoader from 'react-spinners/RotateLoader'
@@ -42,11 +41,13 @@ const ItemDetailContainer = ({ greeting }) => {
  
   
   return (
+  <>
     <div className="text-center container mx-auto mt-5 h-screen">
       <div className="font-bold text-pink-600 text-4xl mb-2">{greeting}</div>  
       {isError && <ErrorMsg text={isError} />}     
       {product.id && <ItemDetail item={product} />}
     </div>
+  </>
   );
   
 };
