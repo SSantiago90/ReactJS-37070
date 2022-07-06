@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import cartContext from "../../context/CartContext";
-import Button from "../Button";
 
 import { createBuyOrder } from "../../services/firestore";
 import CartForm from "./CartForm";
